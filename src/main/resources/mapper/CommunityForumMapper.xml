@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycommunity.dao.CommunityForumDao">
+    <select id="getMainPartition" resultType="CommunityForum">
+        select * from CommunityForum where parentId is null or parentId &lt; 1
+    </select>
+    <select id="getPlateContent" resultType="CommunityForum" parameterType="int">
+        select * from CommunityForum where parentId = #{parentId}
+    </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <!-- 定义模板 -->
+    <definition name="defaultTemplate" template="/WEB-INF/views/default/default-template.jsp">
+        <put-attribute name="header"></put-attribute>
+        <put-attribute name="content"></put-attribute>
+        <put-attribute name="footer"></put-attribute>
+    </definition>
+    <!-- 主页 -->
+    <definition name="index" extends="defaultTemplate">
+        <put-attribute name="header" value="/WEB-INF/views/default/default-header.jsp"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/views/index.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/views/default/default-footer.jsp"></put-attribute>
+    </definition>
+    <!-- 登录 -->
+    <definition name="login" extends="defaultTemplate">
+        <put-attribute name="header" value="/WEB-INF/views/default/default-header.jsp"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/views/login.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/views/default/default-footer.jsp"></put-attribute>
+    </definition>
+    <!-- 注册 -->
+    <definition name="register" extends="defaultTemplate">
+        <put-attribute name="header" value="/WEB-INF/views/default/default-header.jsp"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/views/register.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/views/default/default-footer.jsp"></put-attribute>
+    </definition>
+    <!-- 论坛板块 -->
+    <definition name="forumPlate" extends="defaultTemplate">
+        <put-attribute name="header" value="/WEB-INF/views/default/default-header.jsp"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/views/forumPlate.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/views/default/default-footer.jsp"></put-attribute>
+    </definition>
+</tiles-definitions>

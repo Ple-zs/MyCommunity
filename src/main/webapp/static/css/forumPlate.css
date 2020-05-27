@@ -1,0 +1,8 @@
+.pagingButton{
+    display: inline-block;
+    float: right;
+}
+
+.panel{
+    overflow: hidden;
+}

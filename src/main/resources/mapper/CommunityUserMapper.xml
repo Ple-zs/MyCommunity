@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycommunity.dao.CommunityUserDao">
+    <select id="getAll" resultType="CommunityUser">
+        select * from CommunityUser
+    </select>
+    <select id="getUserByStr" resultType="CommunityUser" parameterType="hashmap">
+        select * from CommunityUser where userName = #{name} and password = #{pwd}
+    </select>
+    <insert id="userRegistration" parameterType="CommunityUser">
+        insert into CommunityUser values(seq_community_user.nextval,#{userName},#{nickName},#{passWord},'',#{email},0,1,1)
+    </insert>
+    <select id="exists" resultType="int" parameterType="string">
+        select count(id) from CommunityUser where username = #{name}
+    </select>
+</mapper>

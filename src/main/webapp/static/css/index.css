@@ -1,0 +1,130 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+
+#main{
+    width: 1300px;
+    overflow: hidden;
+}
+
+#footer{
+    width: 1300px;
+    margin-top: 50px;
+}
+
+.fixation-login{
+    width: 1300px;
+    height: 65px;
+    background-image: url("../../static/images/logo/logo.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 220px;
+    margin-top: 1%;
+}
+
+.nav-V{
+    width: 1300px;
+    margin-top: 10px;
+}
+
+.ctn_1_twoModule{
+    overflow: hidden;
+}
+
+.left_carousel{
+    overflow: hidden;
+    width: 649px;
+    height: 340px;
+    float: left;
+    border-radius: 5px;
+}
+
+.right_hotPlate{
+    float: right;
+    width: 600px;
+    height: 340px;
+}
+
+.list-group-item a{
+    color: #0dadee;
+}
+
+.ctn_2_cellphone-forum{
+    margin-top: 20px;
+}
+
+.well{
+    font-size: 18px;
+}
+
+.well>p{
+    text-align: center;
+}
+
+.thumbnail{
+    text-align: center;
+}
+
+.thumbnail p{
+    padding: 0 10px;
+}
+
+.thumbnail label{
+    margin: 8px;
+    font-size: 16px;
+    display: inline-block;
+    color: #36a3cd;
+}
+
+#login_form>div,#register_form>div{
+    margin-bottom: 10px;
+}
+
+#login_form input,#register_form input{
+    width: 300px;
+}
+
+.tow_len{
+    padding: 0 18px;
+}
+.three_len{
+    padding: 0 19px;
+}
+.input_hint{
+    position: absolute;
+    left: 390px;
+    top: 5px;
+    padding: 3px 10px;
+    font-size: 12px;
+    border: 1px #EBCCD1 solid;
+    border-radius: 3px;
+    background-color: #F2DEDE;
+    color: #B94442;
+    display: none;
+}
+
+.login_btn,.register_btn{
+    border: 1px solid #1eb81e;
+    color: white;
+    background-color: #1eb81e;
+}
+
+.reset_btn{
+    border: 1px solid #c4c1c1;
+    color: #5a5858;
+    background-color: rgba(255,255,255,0);
+}
+
+.custom_btn{
+    padding: 5px 30px;
+    border-radius: 3px;
+}
+
+.login_hint{
+    display: none;
+}
+
+.ctn_2_platePartition{
+    margin-top: 20px;
+}

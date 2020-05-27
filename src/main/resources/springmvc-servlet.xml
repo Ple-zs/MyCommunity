@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- 使用注解的方式访问 action -->
+	<mvc:annotation-driven> <!-- conversion-service="conversionService" -->
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<!-- 这里顺序不能反，一定先写 text/html,不然 ie 下出现下载提示 -->
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<!-- 静态资源不经过核心控制器 -->
+	<mvc:resources mapping="/static/**" location="/static/" />
+	<!-- jsp(jstl)视图解析器 -->
+	<!-- 1-->
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="order" value="1" />
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	</bean>
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles/tiles-definitions.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 2 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="2" />
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- controller 扫描包-->
+	<context:component-scan base-package="com.mycommunity.controller" />
+	
+
+	<!-- 日期类型转换器 
+	<bean id="conversionService"
+		class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="com.mycinema.converter.MyDateConverter">
+					<property name="dateFormats">
+						<list>
+							<value>yyyy-MM-dd</value>
+							<value>yyyy/MM/dd</value>
+							<value>yy.MM.dd</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>-->
+	<!-- 上传文件的解析器， id 是规定的，不能随便改名字
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<value>1024000</value> --> <!-- 字节为单位, value 不支持表达式
+		</property>
+		<property name="defaultEncoding">
+			<value>UTF-8</value>
+		</property>
+	</bean> -->
+
+	<!-- 全局异常处理 -->
+	<!-- 全局异常抛出的异常对象名为"exception" -->
+	<!-- error：jsp前缀 -->
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">error</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 配置拦截器 exclude-mapping:不拦截 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/static/**" />
+			<bean class="com.mycommunity.interceptot.TimerInterceptor" />
+		</mvc:interceptor>
+<!--		<mvc:interceptor>-->
+<!--			<mvc:mapping path="/dialogue/**" />-->
+<!--			<bean class="com.myhouse.interceptot.SecurityInterceptor" />-->
+<!--		</mvc:interceptor>-->
+<!--		<mvc:interceptor>-->
+<!--			<mvc:mapping path="/up/**" />-->
+<!--			<bean class="com.myhouse.interceptot.SecurityInterceptor" />-->
+<!--		</mvc:interceptor>-->
+	</mvc:interceptors>
+
+</beans>
