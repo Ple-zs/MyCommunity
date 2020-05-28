@@ -43,9 +43,9 @@
                     </li>
                     </c:if>
                 </ul>
-                <form class="navbar-form navbar-left">
+                <form action="${ initParam.webUrl }/search" method="get" class="navbar-form navbar-left">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="主题">
+                        <input type="text" name="title" value="${ title }" class="form-control" placeholder="主题">
                     </div>
                     <button type="submit" class="btn btn-default">搜索</button>
                 </form>
@@ -65,3 +65,10 @@
         </div><!-- /.container-fluid -->
     </nav>
 </div>
+<script>
+    $("button[type=submit]").click(function () {
+        if($("input[name=title]").val() == null || $("input[name=title]").val().trim() == ""){
+            return false;
+        }
+    });
+</script>

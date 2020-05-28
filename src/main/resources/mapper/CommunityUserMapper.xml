@@ -10,7 +10,7 @@
         select * from CommunityUser where userName = #{name} and password = #{pwd}
     </select>
     <insert id="userRegistration" parameterType="CommunityUser">
-        insert into CommunityUser values(seq_community_user.nextval,#{userName},#{nickName},#{passWord},'',#{email},0,1,1)
+        insert into CommunityUser values(seq_community_user.nextval,#{userName},#{nickName},#{passWord},'',#{email},0,1,1,'default-HP.jpg')
     </insert>
     <select id="exists" resultType="int" parameterType="string">
         select count(id) from CommunityUser where username = #{name}

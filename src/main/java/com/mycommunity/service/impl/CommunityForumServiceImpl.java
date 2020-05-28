@@ -27,4 +27,9 @@ public class CommunityForumServiceImpl implements CommunityForumService {
     public List<CommunityForum> getPlateContent(int parentId) {
         return communityForumDao.getPlateContent(parentId);
     }
+
+    @Override
+    public CommunityForum getCommunityForumById(int id) {
+        return communityForumDao.getCommunityForumById(id);
+    }
 }

@@ -11,22 +11,17 @@ import java.util.Date;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommunityTopic {
+public class CommunityComment {
     private int id;
-    private String title;
     private String content;
-    private Date createTime;
-    private int forumId;
-    private int authorId;
+    private Date commentTime;
     private String ip;
-    private int commentTimes;
-    private Date updateTime;
-    private int clicks;
-    private int isBest;
+    private int commentType;
+    private int referenceId;
+    private int commenterId;
     private int status;
-    private String authorName;
-    private String forumName;
+    private String commenterUser_nickName;
     private String user_Hp_Path;
+    private int userGrade;
     private String signature;
-    private int grade;
 }

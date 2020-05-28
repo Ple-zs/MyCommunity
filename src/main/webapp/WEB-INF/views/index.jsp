@@ -41,7 +41,7 @@
                     <c:forEach items="${ communityTopicList }" var="topic">
                         <li class="list-group-item">
                             <span class="badge">回复:&nbsp;${ topic.commentTimes }</span>
-                            <a href="">${ topic.title }</a>
+                            <a href="${ initParam.webUrl }/showTContent?tid=${ topic.id }">${ topic.title }</a>
                         </li>
                     </c:forEach>
                 </ul>
@@ -55,7 +55,7 @@
         <div class="row">
             <c:forEach items="${ mainPlate.plateList }" var="platePartition">
                 <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
+                    <a href="${ initParam.webUrl }/forumPlate?forumId=${ platePartition.id }" class="thumbnail">
                         <img src="${ initParam.webUrl }/static/images/forum/${ platePartition.forumImagePath }"
                              alt="...">
                         <label>${ platePartition.name }</label>

@@ -9,4 +9,7 @@
     <select id="getPlateContent" resultType="CommunityForum" parameterType="int">
         select * from CommunityForum where parentId = #{parentId}
     </select>
+    <select id="getCommunityForumById" resultType="CommunityForum" parameterType="int">
+        select * from CommunityForum where id = ${id}
+    </select>
 </mapper>

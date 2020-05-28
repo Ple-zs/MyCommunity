@@ -33,4 +33,16 @@
         <put-attribute name="content" value="/WEB-INF/views/forumPlate.jsp"></put-attribute>
         <put-attribute name="footer" value="/WEB-INF/views/default/default-footer.jsp"></put-attribute>
     </definition>
+    <!-- 搜索 -->
+    <definition name="search" extends="defaultTemplate">
+        <put-attribute name="header" value="/WEB-INF/views/default/default-header.jsp"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/views/search.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/views/default/default-footer.jsp"></put-attribute>
+    </definition>
+    <!-- 显示主题内容 -->
+    <definition name="showTContent" extends="defaultTemplate">
+        <put-attribute name="header" value="/WEB-INF/views/default/default-header.jsp"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/views/topic_content.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/views/default/default-footer.jsp"></put-attribute>
+    </definition>
 </tiles-definitions>

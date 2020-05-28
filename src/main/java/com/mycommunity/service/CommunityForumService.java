@@ -12,4 +12,7 @@ public interface CommunityForumService {
 
     //通过主板块获得该板块内容
     List<CommunityForum> getPlateContent(@Param("parentId") int parentId);
+
+    //根据id获得板块信息
+    CommunityForum getCommunityForumById(@Param("id") int id);
 }

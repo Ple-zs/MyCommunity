@@ -6,4 +6,47 @@
     <select id="getRecentlyHot_sixCountData" resultType="CommunityTopic">
         select a.*,rownum from (select * from CommunityTopic order by updatetime desc) a where rownum &lt; 7
     </select>
+    <select id="getDigestByForumId_fiveCountData" resultType="CommunityTopic" parameterType="int">
+        select a.*,rownum from (select ct.*,cu.nickname authorName from CommunityTopic ct join CommunityUser cu on cu.id
+        = ct.authorid where ct.isBest = 1 and ct.Status = 1
+        <if test="forumId>0">
+            and ct.forumId = #{forumId}
+        </if>
+        order by updatetime desc) a where rownum &lt; 6
+    </select>
+    <select id="getGeneralPartition_ByForumId" resultType="CommunityTopic" parameterType="hashmap">
+        select * from (
+        select a.*,row_number()over(order by id) num
+        from (select ct.*,cu.nickname authorName from CommunityTopic ct join CommunityUser cu on cu.id = ct.authorid
+        where ct.Status = 1
+        <if test="isBest>=0">
+            and ct.isBest = #{isBest}
+        </if>
+        <if test="title!=null and title!=''">
+            and ct.title like '%'|| #{title} ||'%'
+        </if>
+        <if test="forumId>0">
+            and ct.forumId = #{forumId}
+        </if>
+        order by ct.updatetime desc) a) b
+        where num &gt;= (#{currentPage}-1)*#{row}+1 and num &lt;= (#{row}*#{currentPage})
+    </select>
+    <select id="rowsCount" resultType="int" parameterType="hashmap">
+        select count(id) from CommunityTopic where Status = 1
+        <if test="isBest>=0">
+            and isBest = #{isBest}
+        </if>
+        <if test="forumId>0">
+            and forumId = #{forumId}
+        </if>
+        <if test="title!=null and title!=''">
+            and title like '%'|| #{title} ||'%'
+        </if>
+    </select>
+    <select id="getCommunityTopicById" resultType="CommunityTopic" parameterType="int">
+        select ct.*,cf.name forumName,cu.nickname authorName,cu.user_hp_path,cu.signature,cu.grade from CommunityTopic ct
+        join CommunityForum cf on cf.id = ct.forumid
+        join CommunityUser cu on cu.id = ct.authorid
+        where ct.id = ${id}
+    </select>
 </mapper>
