@@ -116,7 +116,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.13</version>
+            <version>1.2.25</version>
         </dependency>
         <!-- 在 Spring MVC 项目中添加 Tiles3 依赖 -->
         <dependency>
