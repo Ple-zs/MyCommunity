@@ -16,5 +16,6 @@ public class CommunityForumServiceTest {
         for (CommunityForum communityForum: communityForumService.getMainPartition()) {
             System.out.println("主板块Id：" + communityForum.getId() + "\t" + "板块内容：" + communityForum.getPlateList().size());
         }
+        System.out.println(communityForumService.getCommunityForumExcludeMain().size());
     }
 }

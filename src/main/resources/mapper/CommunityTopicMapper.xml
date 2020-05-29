@@ -49,4 +49,10 @@
         join CommunityUser cu on cu.id = ct.authorid
         where ct.id = ${id}
     </select>
+    <insert id="addCommunityTopic" parameterType="CommunityTopic">
+        insert into CommunityTopic values(seq_community_topic.nextval,#{title},#{content},sysdate,#{forumId},#{authorId},#{ip},0,sysdate,0,0,1)
+    </insert>
+    <select id="getNewestCommunityTopicId" resultType="int">
+        select max(id) from CommunityTopic
+    </select>
 </mapper>

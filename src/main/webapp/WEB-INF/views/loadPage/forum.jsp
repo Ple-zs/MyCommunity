@@ -23,7 +23,7 @@
         </tr>
         <c:forEach items="${ generalPartitionList }" var="generalPartition">
             <tr>
-                <td><a href="">${ generalPartition.title }</a></td>
+                <td><a href="${ initParam.webUrl }/showTContent?tid=${ generalPartition.id }">${ generalPartition.title }</a></td>
                 <td>${ generalPartition.authorName }</td>
                 <td>${ generalPartition.commentTimes }</td>
                 <td><fmt:formatDate value="${ generalPartition.updateTime }" pattern="yyyy-MM-dd hh:mm:ss"/></td>

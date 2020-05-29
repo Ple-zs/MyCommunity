@@ -9,9 +9,8 @@
         select cc2.*,cu.nickname commenterUser_nickName,cu.user_hp_path,cu.grade userGrade,cu.signature from(
         select cc.* from CommunityComment cc
         where (CommentType = 1 and ReferenceId = #{tid}) or
-        (CommentType = 2 and ReferenceId in (select * from (select id from CommunityComment where ReferenceId = #{tid}) a))
-        order by cc.CommentTime asc) cc2
-        join CommunityUser cu on cu.id = cc2.CommenterId) cc3) cc4
+        (CommentType = 2 and ReferenceId in (select * from (select id from CommunityComment where ReferenceId = #{tid}) a))) cc2
+        join CommunityUser cu on cu.id = cc2.CommenterId order by cc2.CommentTime asc) cc3) cc4
         <choose>
             <when test="currentPage>1">
                 where num &gt;= (#{currentPage}-1)*(${row}-1)+1 and num &lt;= (#{currentPage}*(${row}-1))+1
@@ -25,4 +24,7 @@
         select count(id) from CommunityComment where (CommentType = 1 and ReferenceId = #{tid}) or
         (CommentType = 2 and ReferenceId in (select * from (select id from CommunityComment where ReferenceId = #{tid}) a))
     </select>
+    <insert id="addCommunityComment" parameterType="CommunityComment">
+        insert into CommunityComment values(seq_community_comment.nextval,#{content},sysdate,#{ip},#{commentType},#{referenceId},#{commenterId},1)
+    </insert>
 </mapper>

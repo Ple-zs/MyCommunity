@@ -31,7 +31,7 @@
             </tr>
             <c:forEach items="${ digestList }" var="digest">
                 <tr>
-                    <td><a href="">${ digest.title }</a></td>
+                    <td><a href="${ initParam.webUrl }/showTContent?tid=${ digest.id }">${ digest.title }</a></td>
                     <td>${ digest.authorName }</td>
                     <td>${ digest.commentTimes }</td>
                     <td><fmt:formatDate value="${ digest.updateTime }" pattern="yyyy-MM-dd hh:mm:ss"/></td>

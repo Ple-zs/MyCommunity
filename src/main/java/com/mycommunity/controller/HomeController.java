@@ -97,6 +97,7 @@ public class HomeController {
         CommunityTopic communityTopic = communityTopicService.getCommunityTopicById(tid);
         List<CommunityComment> communityCommentList = communityCommentService.getCommunityCommentByTid(currentPage,row,tid);
         model.addAttribute("tid",tid);
+        model.addAttribute("row",row);
         model.addAttribute("currentPage",currentPage);
         model.addAttribute("countPage",countPage);
         model.addAttribute("communityCommentList",communityCommentList);

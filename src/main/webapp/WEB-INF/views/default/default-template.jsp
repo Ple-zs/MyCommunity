@@ -16,6 +16,8 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="${ initParam.webUrl }/static/css/index.css"/>
     <script src="${ initParam.webUrl }/static/js/jquery-3.4.1.js"></script>
+    <script src="${ initParam.webUrl }/static/ckeditor/ckeditor.js"></script>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 </head>
 <body>
 <div id="header">

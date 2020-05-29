@@ -31,7 +31,11 @@ $(function () {
         if(userNameBool && passWordBool){
             $.post("userLogin",{"name":$(".userName").val(),"pwd":$(".passWord").val()},function (data) {
                 if(data == "true"){
-                    location.replace("index");
+                    if($("#returnUrl").val() !=null && $("#returnUrl").val().trim() != ""){
+                        location.replace($("#returnUrl").val());
+                    }else{
+                        location.replace("index");
+                    }
                 }else{
                     $(".login_hint").show();
                 }

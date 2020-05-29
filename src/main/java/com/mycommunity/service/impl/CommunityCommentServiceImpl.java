@@ -23,4 +23,9 @@ public class CommunityCommentServiceImpl implements CommunityCommentService {
     public int getRowsCount(int tid) {
         return communityCommentDao.getRowsCount(tid);
     }
+
+    @Override
+    public int addCommunityComment(CommunityComment communityComment) {
+        return communityCommentDao.addCommunityComment(communityComment);
+    }
 }

@@ -128,3 +128,12 @@
 .ctn_2_platePartition{
     margin-top: 20px;
 }
+
+/*发表按钮样式*/
+.publish{
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 3px;
+    background-color: #1eb81e;
+}

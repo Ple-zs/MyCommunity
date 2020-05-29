@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="login_msg-V">
+    <input type="hidden" id="returnUrl" value="${ param.returnUrl }">
     <ol class="breadcrumb">
         <li><a href="${ initParam.webUrl }/index">首页</a></li>
         <li class="active">登录</li>

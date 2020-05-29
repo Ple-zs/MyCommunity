@@ -19,7 +19,6 @@
         <li class="active">${ communityTopic.title }</li>
     </ol>
 </div>
-<div class="_TC clr_float">
-
-</div>
+<div class="_TC clr_float"></div>
 <script src="${ initParam.webUrl }/static/js/topic_content.js"></script>
+

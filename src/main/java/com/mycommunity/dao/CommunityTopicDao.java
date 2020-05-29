@@ -20,4 +20,10 @@ public interface CommunityTopicDao {
 
     //根据id获得主题
     CommunityTopic getCommunityTopicById(@Param("id") int id);
+
+    //发表主题
+    int addCommunityTopic(CommunityTopic communityTopic);
+
+    //获得最新添加的主题id
+    int getNewestCommunityTopicId();
 }

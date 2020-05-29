@@ -15,4 +15,7 @@ public interface CommunityForumService {
 
     //根据id获得板块信息
     CommunityForum getCommunityForumById(@Param("id") int id);
+
+    //获得全部板块内容不包括主板
+    List<CommunityForum>getCommunityForumExcludeMain();
 }

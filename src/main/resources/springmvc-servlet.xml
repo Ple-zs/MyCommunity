@@ -95,10 +95,10 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 			<mvc:exclude-mapping path="/static/**" />
 			<bean class="com.mycommunity.interceptot.TimerInterceptor" />
 		</mvc:interceptor>
-<!--		<mvc:interceptor>-->
-<!--			<mvc:mapping path="/dialogue/**" />-->
-<!--			<bean class="com.myhouse.interceptot.SecurityInterceptor" />-->
-<!--		</mvc:interceptor>-->
+		<mvc:interceptor>
+			<mvc:mapping path="/send/**" />
+			<bean class="com.mycommunity.interceptot.SecurityInterceptor" />
+		</mvc:interceptor>
 <!--		<mvc:interceptor>-->
 <!--			<mvc:mapping path="/up/**" />-->
 <!--			<bean class="com.myhouse.interceptot.SecurityInterceptor" />-->

@@ -1,0 +1,52 @@
+
+.newTopic_form>div{
+    margin-bottom: 10px;
+}
+
+.topic_title{
+    overflow: hidden;
+}
+
+.topic_title>div{
+    width: 635px;
+    float: left;
+}
+
+.publish{
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 3px;
+    background-color: #1eb81e;
+    margin-top: 10px;
+    float: right;
+}
+
+.clear_float{
+    overflow: hidden;
+}
+
+.hint{
+    position: absolute;
+    right: -105px;
+    top: 5px;
+    padding: 3px 10px;
+    font-size: 12px;
+    border: 1px #EBCCD1 solid;
+    border-radius: 3px;
+    background-color: #F2DEDE;
+    color: #B94442;
+    display: none;
+}
+
+.forum_hint{
+    right: -117px;
+}
+
+.title_input-V{
+    position: relative;
+}
+
+.content_hint{
+    display: none;
+}

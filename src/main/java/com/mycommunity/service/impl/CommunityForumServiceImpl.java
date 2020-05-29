@@ -32,4 +32,9 @@ public class CommunityForumServiceImpl implements CommunityForumService {
     public CommunityForum getCommunityForumById(int id) {
         return communityForumDao.getCommunityForumById(id);
     }
+
+    @Override
+    public List<CommunityForum> getCommunityForumExcludeMain() {
+        return communityForumDao.getCommunityForumExcludeMain();
+    }
 }

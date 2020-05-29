@@ -38,4 +38,14 @@ public class CommunityTopicServiceImpl implements CommunityTopicService {
     public CommunityTopic getCommunityTopicById(int id) {
         return communityTopicDao.getCommunityTopicById(id);
     }
+
+    @Override
+    public int addCommunityTopic(CommunityTopic communityTopic) {
+        return communityTopicDao.addCommunityTopic(communityTopic);
+    }
+
+    @Override
+    public int getNewestCommunityTopicId() {
+        return communityTopicDao.getNewestCommunityTopicId();
+    }
 }

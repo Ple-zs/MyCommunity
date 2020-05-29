@@ -12,4 +12,7 @@
     <select id="getCommunityForumById" resultType="CommunityForum" parameterType="int">
         select * from CommunityForum where id = ${id}
     </select>
+    <select id="getCommunityForumExcludeMain" resultType="CommunityForum">
+        select * from CommunityForum where parentid &gt; 0 and parentid is not null
+    </select>
 </mapper>

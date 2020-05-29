@@ -8,10 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div class="fill_area_3">
     <input type="hidden" id="currentPage" value="${ currentPage }"/>
     <input type="hidden" id="tid_2" value="${ tid }"/>
-    <script src="${ initParam.webUrl }/static/js/comment.js"></script>
+    <input type="hidden" id="row" value="${ row }"/>
     <ul class="comment-V">
         <li class="one_floor">
             <table border="1" cellspacing="0" cellpadding="0" class="tc_table">
@@ -20,17 +21,20 @@
                     <td class="td_text hover_floor">
                         <span class="float_left">标题：${ communityTopic.title }
                             <button class="reply_btn_hover" data_cid="${ communityTopic.authorId }"
-                                    data_reply_user_nickName="${ communityTopic.authorName }">回复</button></span>
+                                    data_reply_user_nickName="${ communityTopic.authorName }"
+                                    onclick="replyF(this)">回复</button></span>
                         <span class="float_right"><a href="" class="mail_logo">发邮件</a></span>
                     </td>
                 </tr>
                 <tr>
                     <td class="td_width td_UHP">
-                        <img src="${ initParam.webUrl }/static/images/user_HP/1.jpg"/>
+                        <img src="${ initParam.webUrl }/static/images/user_HP/${ communityTopic.user_Hp_Path }"/>
                     </td>
-                    <td class="td_text clr_float">
+                    <td class="td_text clr_float content_padding">
                         <p>${ communityTopic.content }</p>
-                        <p class="signature">——————${ communityTopic.signature }</p>
+                        <c:if test="${ not empty communityTopic.signature }">
+                            <p class="signature">——————${ communityTopic.signature }</p>
+                        </c:if>
                     </td>
                 </tr>
                 <tr>
@@ -38,7 +42,7 @@
                     <td class="td_text clr_float">
                         <span class="float_left">发表时间：<fmt:formatDate value="${ communityTopic.createTime }"
                                                                       pattern="yyyy-MM-dd hh:mm:ss"/></span>
-                        <span class="float_right">IP：101.23.0.23</span>
+                        <span class="float_right">IP：${ communityTopic.ip }</span>
                     </td>
                 </tr>
             </table>
@@ -51,10 +55,16 @@
                         <td class="td_text hover_floor">
                             <c:choose>
                                 <c:when test="${ currentPage==1 }">
-                                    <span class="float_left">${ status.count + 1 }楼<button class="reply_btn_hover" data_cid="${ communityComment.id }" data_reply_user_nickName="${ communityComment.commenterUser_nickName }">回复</button></span>
+                                    <span class="float_left">${ status.count + 1 }楼<button class="reply_btn_hover"
+                                                                                           data_cid="${ communityComment.id }"
+                                                                                           data_reply_user_nickName="${ communityComment.commenterUser_nickName }"
+                                                                                           onclick="replyF(this)">回复</button></span>
                                 </c:when>
                                 <c:otherwise>
-                                    <span class="float_left">${ (currentPage-1) * 5 + status.count }楼<button class="reply_btn_hover" data_cid="${ communityComment.id }" data_reply_user_nickName="${ communityComment.commenterUser_nickName }">回复</button></span>
+                                    <span class="float_left">${ (currentPage-1) * 5 + status.count }楼<button
+                                            class="reply_btn_hover" data_cid="${ communityComment.id }"
+                                            data_reply_user_nickName="${ communityComment.commenterUser_nickName }"
+                                            onclick="replyF(this)">回复</button></span>
                                 </c:otherwise>
                             </c:choose>
                             <span class="float_right"><a href="${ communityComment.commenterId }"
@@ -65,7 +75,7 @@
                         <td class="td_width td_UHP">
                             <img src="${ initParam.webUrl }/static/images/user_HP/${ communityComment.user_Hp_Path }"/>
                         </td>
-                        <td class="td_text clr_float">
+                        <td class="td_text clr_float content_padding">
                             <c:choose>
                                 <c:when test="${ commentType == 2 }">
                                     <p><span
@@ -76,7 +86,9 @@
                                     <p>${ communityComment.content }</p>
                                 </c:otherwise>
                             </c:choose>
-                            <p class="signature">——————${ communityComment.signature }</p>
+                            <c:if test="${ not empty communityComment.signature }">
+                                <p class="signature">——————${ communityComment.signature }</p>
+                            </c:if>
                         </td>
                     </tr>
                     <tr>
@@ -90,7 +102,8 @@
                 </table>
             </li>
         </c:forEach>
-        <li style="overflow: hidden;">
+        <c:if test="${ fn:length(communityCommentList) > 0  }">
+            <li style="overflow: hidden;">
             <span class="pagingButton">
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
@@ -104,7 +117,8 @@
                             </c:when>
                             <c:otherwise>
                                 <li>
-                                    <a href="javaScript:;" onclick="commentPaging(4,${ currentPage-1 })" aria-label="Previous">
+                                    <a href="javaScript:;" onclick="commentPaging(4,${ currentPage-1 })"
+                                       aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
@@ -118,10 +132,12 @@
                                 <c:otherwise>
                                     <c:choose>
                                         <c:when test="${ status.count == 1 }">
-                                            <li><a href="javaScript:;" onclick="commentPaging(4,1)">${ status.count }</a></li>
+                                            <li><a href="javaScript:;"
+                                                   onclick="commentPaging(4,1)">${ status.count }</a></li>
                                         </c:when>
                                         <c:otherwise>
-                                            <li><a href="javaScript:;" onclick="commentPaging(5,${ status.count })">${ status.count }</a></li>
+                                            <li><a href="javaScript:;"
+                                                   onclick="commentPaging(5,${ status.count })">${ status.count }</a></li>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:otherwise>
@@ -137,7 +153,8 @@
                             </c:when>
                             <c:otherwise>
                                 <li>
-                                    <a href="javaScript:;" onclick="commentPaging(5,${ currentPage+1 })" aria-label="Next">
+                                    <a href="javaScript:;" onclick="commentPaging(5,${ currentPage+1 })"
+                                       aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
@@ -146,7 +163,8 @@
                     </ul>
                 </nav>
             </span>
-        </li>
+            </li>
+        </c:if>
     </ul>
     <div class="panel panel-default">
         <div class="panel-heading">回复</div>
@@ -160,6 +178,9 @@
                             <strong>@</strong>&nbsp;<span class="user_nickName"></span>
                         </div>
                     </div>
+                    <div class="non_null_hint" style="display: none">
+                        <div class="alert alert-danger" role="alert"><strong>回复内容不能为空！</strong></div>
+                    </div>
                     <table class="reply_table">
                         <tr>
                             <td class="reply_td"><p>内容</p></td>
@@ -170,17 +191,18 @@
                         <tr>
                             <td class="reply_td"></td>
                             <td>
-                                <button class="publish">发表</button>
+                                <button class="publish" onclick="publishF()">发表</button>
                             </td>
                         </tr>
                     </table>
                 </c:when>
                 <c:otherwise>
                     <div class="alert alert-success" role="alert"><strong><a
-                            href="${ initParam.webUrl }/login?returnUrl=${ initParam.webUrl }/showTContent">点击我去登录~</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;未登录账号无法发表回复。
+                            href="${ initParam.webUrl }/login?returnUrl=showTContent?tid=${ tid }">点击我去登录~</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;未登录账号无法发表回复。
                     </div>
                 </c:otherwise>
             </c:choose>
         </div>
     </div>
+    <script src="${ initParam.webUrl }/static/js/comment.js"></script>
 </div>
