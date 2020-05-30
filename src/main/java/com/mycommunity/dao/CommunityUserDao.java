@@ -17,4 +17,7 @@ public interface CommunityUserDao {
 
     //查询用户名是否存在
     int exists(@Param("name")String name);
+
+    //根据Name获得Id
+    int getUserIdByName(@Param("name")String name);
 }

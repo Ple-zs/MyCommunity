@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script src="${ initParam.webUrl }/static/js/index.js"></script>
 <title>首页</title>
 <link rel="stylesheet" href="${ initParam.webUrl }/static/css/carousel.css"/>
 <div class="ctn_1_twoModule">
@@ -41,7 +42,7 @@
                     <c:forEach items="${ communityTopicList }" var="topic">
                         <li class="list-group-item">
                             <span class="badge">回复:&nbsp;${ topic.commentTimes }</span>
-                            <a href="${ initParam.webUrl }/showTContent?tid=${ topic.id }">${ topic.title }</a>
+                            <a href="${ initParam.webUrl }/showTContent?tid=${ topic.id }" data_tid="${ topic.id }" class="gotoTopic">${ topic.title }</a>
                         </li>
                     </c:forEach>
                 </ul>

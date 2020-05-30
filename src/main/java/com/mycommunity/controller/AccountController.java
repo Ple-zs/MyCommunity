@@ -59,6 +59,7 @@ public class AccountController {
         }
     }
 
+    //注册
     @RequestMapping("/userRegister")
     @ResponseBody
     public void userRegister(HttpSession session, HttpServletResponse response, String name, String pwd, String nickName, String email) throws IOException {

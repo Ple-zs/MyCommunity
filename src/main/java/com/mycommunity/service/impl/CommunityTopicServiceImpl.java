@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class CommunityTopicServiceImpl implements CommunityTopicService {
 
@@ -25,13 +26,13 @@ public class CommunityTopicServiceImpl implements CommunityTopicService {
     }
 
     @Override
-    public List<CommunityTopic> getGeneralPartition_ByForumId(int currentPage, int row, int forumId, String title,int isBest) {
-        return communityTopicDao.getGeneralPartition_ByForumId(currentPage, row, forumId, title,isBest);
+    public List<CommunityTopic> getGeneralPartition_ByForumId(int currentPage, int row, int forumId, String title, int isBest) {
+        return communityTopicDao.getGeneralPartition_ByForumId(currentPage, row, forumId, title, isBest);
     }
 
     @Override
-    public int rowsCount(int forumId, String title,int isBest) {
-        return communityTopicDao.rowsCount(forumId, title,isBest);
+    public int rowsCount(int forumId, String title, int isBest) {
+        return communityTopicDao.rowsCount(forumId, title, isBest);
     }
 
     @Override
@@ -47,5 +48,20 @@ public class CommunityTopicServiceImpl implements CommunityTopicService {
     @Override
     public int getNewestCommunityTopicId() {
         return communityTopicDao.getNewestCommunityTopicId();
+    }
+
+    @Override
+    public int updateCommentTimesById(int id) {
+        return communityTopicDao.updateCommentTimesById(id);
+    }
+
+    @Override
+    public int updateRecentlyCommunityTimeById(int id) {
+        return communityTopicDao.updateRecentlyCommunityTimeById(id);
+    }
+
+    @Override
+    public int updateClicksById(int id) {
+        return communityTopicDao.updateClicksById(id);
     }
 }

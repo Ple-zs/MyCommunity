@@ -77,10 +77,8 @@
                         </td>
                         <td class="td_text clr_float content_padding">
                             <c:choose>
-                                <c:when test="${ commentType == 2 }">
-                                    <p><span
-                                            class="show_reply_user">回复：${ communityComment.referenceId }</span>${ communityComment.content }
-                                    </p>
+                                <c:when test="${ communityComment.commentType == 2 }">
+                                    <p><span class="show_reply_user">回复：${ communityComment.referenceId }</span>${ communityComment.content }</p>
                                 </c:when>
                                 <c:otherwise>
                                     <p>${ communityComment.content }</p>

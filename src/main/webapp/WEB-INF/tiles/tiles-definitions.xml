@@ -51,4 +51,10 @@
         <put-attribute name="content" value="/WEB-INF/views/publish_topic.jsp"></put-attribute>
         <put-attribute name="footer" value="/WEB-INF/views/default/default-footer.jsp"></put-attribute>
     </definition>
+    <!-- 邮箱 -->
+    <definition name="mailbox" extends="defaultTemplate">
+        <put-attribute name="header" value="/WEB-INF/views/default/default-header.jsp"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/views/mailbox.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/views/default/default-footer.jsp"></put-attribute>
+    </definition>
 </tiles-definitions>

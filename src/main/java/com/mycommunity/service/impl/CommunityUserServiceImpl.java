@@ -33,4 +33,9 @@ public class CommunityUserServiceImpl implements CommunityUserService {
         return communityUserDao.exists(name);
     }
 
+    @Override
+    public int getUserIdByName(String name) {
+        return communityUserDao.getUserIdByName(name);
+    }
+
 }

@@ -48,6 +48,8 @@ public class SendController {
         communityComment.setReferenceId(referenceId);
         int result = communityCommentService.addCommunityComment(communityComment);
         if(result > 0){
+            communityTopicService.updateCommentTimesById(tid);
+            communityTopicService.updateRecentlyCommunityTimeById(tid);
             response.getWriter().print("true");
         }else{
             response.getWriter().print("false");

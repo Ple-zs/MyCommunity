@@ -55,4 +55,13 @@
     <select id="getNewestCommunityTopicId" resultType="int">
         select max(id) from CommunityTopic
     </select>
+    <update id="updateCommentTimesById" parameterType="int">
+        update CommunityTopic set CommentTimes = CommentTimes+1 where id = #{id}
+    </update>
+    <update id="updateRecentlyCommunityTimeById" parameterType="int">
+        update CommunityTopic set UpdateTime = sysdate where id = #{id}
+    </update>
+    <update id="updateClicksById" parameterType="int">
+        update CommunityTopic set Clicks = Clicks+1 where id = #{id}
+    </update>
 </mapper>

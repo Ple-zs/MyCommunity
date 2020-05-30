@@ -26,4 +26,13 @@ public interface CommunityTopicDao {
 
     //获得最新添加的主题id
     int getNewestCommunityTopicId();
+
+    //更新回复次数
+    int updateCommentTimesById(@Param("id") int id);
+
+    //更新最近回复时间
+    int updateRecentlyCommunityTimeById(@Param("id") int id);
+
+    //更新点击次数
+    int updateClicksById(@Param("id") int id);
 }

@@ -15,4 +15,7 @@
     <select id="exists" resultType="int" parameterType="string">
         select count(id) from CommunityUser where username = #{name}
     </select>
+    <select id="getUserIdByName" resultType="int" parameterType="string">
+        select id from CommunityUser where username = #{name}
+    </select>
 </mapper>

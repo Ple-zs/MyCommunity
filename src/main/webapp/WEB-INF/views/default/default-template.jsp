@@ -33,7 +33,6 @@
     <tiles:insertAttribute name="footer"></tiles:insertAttribute>
 </div>
 
-<script src="${ initParam.webUrl }/static/js/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>

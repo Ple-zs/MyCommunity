@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycommunity.dao.CommunityMessageSendingDao">
+    <select id="getCommunityMessageSendingById" resultType="CommunityMessageSending" parameterType="hashmap">
+        select * from CommunityMessageSending
+        where SenderId = ${senderId} and Status = #{status}
+        order by sendtime desc
+    </select>
+    <update id="send_OperateEmail" parameterType="hashmap">
+        update CommunityMessageSending set Status = ${status} where id = ${id}
+    </update>
+    <select id="getMailById" resultType="CommunityMessageSending" parameterType="hashmap">
+        select * from CommunityMessageSending where id = ${id}
+    </select>
+    <update id="updateDraft" parameterType="CommunityMessageSending">
+        update CommunityMessageSending set title = #{title},Content = #{content},Receivers = #{receivers} where id = #{id}
+    </update>
+    <insert id="addCommunityMessageSending" parameterType="CommunityMessageSending">
+        <choose>
+            <when test="status==0">
+                insert into CommunityMessageSending values(seq_community_message_sending.nextval,#{title},#{content},#{receivers},'',#{senderId},#{status})
+            </when>
+            <otherwise>
+                insert into CommunityMessageSending values(seq_community_message_sending.nextval,#{title},#{content},#{receivers},sysdate,#{senderId},#{status})
+            </otherwise>
+        </choose>
+
+    </insert>
+    <select id="getNewestId" resultType="int">
+        select Max(id) from CommunityMessageSending
+    </select>
+</mapper>
