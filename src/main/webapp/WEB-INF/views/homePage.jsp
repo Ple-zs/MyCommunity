@@ -198,12 +198,7 @@
 
         //刷新
         function refresh_home(){
-            $(".home_fill_area").load("homePage",function () {
-                $('.home_fill_area').each(function () {
-                    let _dom = $(this).html();
-                    $(this).after(_dom).remove();
-                });
-            });
+            location.reload();
         }
     </script>
 </div>
