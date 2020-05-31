@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="${ initParam.webUrl }/static/css/mailbox.css"/>
 <div>
     <input type="hidden" id="showMailPage" value="${ page }"/>
+    <input type="hidden" id="receiverName" value="${ receiverName }"/>
     <ol class="breadcrumb">
         <li><a href="${ initParam.webUrl }/index">首页</a></li>
         <li><a href="javaScript:;">我的收件箱</a></li>

@@ -179,8 +179,13 @@ function readMail(id) {
 }
 
 //回复
-function replyMail() {
-
+function replyMail(receivers) {
+    $(".filler_email").load("show_mailContent",{"receivers":receivers},function () {
+        $('.filler_email').each(function () {
+            let _dom = $(this).html();
+            $(this).after(_dom).remove();
+        });
+    });
 }
 
 

@@ -28,8 +28,12 @@ public class MailboxController {
     private CommunityUserService communityUserService;
 
     @RequestMapping("/mailbox")
-    public String mailbox(Model model,Integer page) {
+    public String mailbox(Model model,Integer page,String receiverName) {
         model.addAttribute("page",page);
+        if(receiverName != null && receiverName != ""){
+            receiverName = communityUserService.getUserNameById(Integer.valueOf(receiverName));
+        }
+        model.addAttribute("receiverName",receiverName);
         return "mailbox";
     }
 
@@ -207,9 +211,18 @@ public class MailboxController {
 
     //读邮件
     @RequestMapping("/read_only_mail")
-    public String read_only_mail(Model model,Integer id){
-        CommunityMessageSending communityMessageSending =communityMessageSendingService.getMailById(id);
-        model.addAttribute("communityMessageSending",communityMessageSending);
+    public String read_only_mail(Model model,Integer id,HttpSession session){
+        int userId = Integer.valueOf(session.getAttribute("loginUserId").toString());
+        CommunityMessageReceiving communityMessageReceiving = communityMessageReceivingService.getCommunityMessageReceivingById(id,userId);
+        model.addAttribute("communityMessageReceiving",communityMessageReceiving);
         return "loadPage/read_only_mail";
     }
+
+    //点击已读
+    @RequestMapping("/sign_read_mail")
+    @ResponseBody
+    public void sign_read_mail(Integer cmrId){
+        communityMessageReceivingService.sign_read(cmrId);
+    }
+
 }

@@ -5,6 +5,8 @@ import com.mycommunity.entity.CommunityUser;
 import com.mycommunity.service.CommunityUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
@@ -37,5 +39,22 @@ public class CommunityUserServiceImpl implements CommunityUserService {
     public int getUserIdByName(String name) {
         return communityUserDao.getUserIdByName(name);
     }
+
+    @Override
+    public String getUserNameById(int id) {
+        return communityUserDao.getUserNameById(id);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public int updateUser(CommunityUser communityUser) {
+        return communityUserDao.updateUser(communityUser);
+    }
+
+    @Override
+    public CommunityUser getUserById(int id) {
+        return communityUserDao.getUserById(id);
+    }
+
 
 }

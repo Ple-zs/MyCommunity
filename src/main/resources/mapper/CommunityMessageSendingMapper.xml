@@ -11,8 +11,10 @@
     <update id="send_OperateEmail" parameterType="hashmap">
         update CommunityMessageSending set Status = ${status} where id = ${id}
     </update>
-    <select id="getMailById" resultType="CommunityMessageSending" parameterType="hashmap">
-        select * from CommunityMessageSending where id = ${id}
+    <select id="getMailById" resultType="CommunityMessageSending" parameterType="int">
+        select cms.*,cu.username senderName from CommunityMessageSending cms
+        join CommunityUser cu on cu.id = cms.senderid
+        where cms.id = #{id}
     </select>
     <update id="updateDraft" parameterType="CommunityMessageSending">
         update CommunityMessageSending set title = #{title},Content = #{content},Receivers = #{receivers} where id = #{id}

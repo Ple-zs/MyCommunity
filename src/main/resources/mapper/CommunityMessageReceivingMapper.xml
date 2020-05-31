@@ -22,6 +22,18 @@
     <insert id="addCommunityMessageReceiving" parameterType="hashmap">
         insert into CommunityMessageReceiving values(seq_community_message_recei.nextval,#{messageSendingId},#{receiverId},0,1)
     </insert>
+    <select id="getCommunityMessageReceivingById" resultMap="CommunityMessageReceivingType1" parameterType="hashmap">
+        select cmr.id cmrId,cmr.messagesendingid,cmr.receiverid,cmr.readed,cmr.status cmrStatus
+       ,cms.id cmsId,cms.title,cms.content,cms.receivers,cms.sendtime,cms.senderid,cms.status cmsStatus
+       ,cu.nickname sendNickName,cu.username senderName
+        from CommunityMessageReceiving cmr
+        join CommunityMessageSending cms on cmr.messagesendingid = cms.id
+        join CommunityUser cu on cu.id = cms.senderid
+        where cms.id = #{cmsId} and cmr.receiverid = #{receiverId}
+    </select>
+    <update id="sign_read" parameterType="int">
+        update CommunityMessageReceiving set Readed = 1 where id = #{cmrId}
+    </update>
 
     <resultMap type="CommunityMessageReceiving" id="CommunityMessageReceivingType1">
         <id column="cmrid" property="id"/>

@@ -27,7 +27,7 @@ $(function () {
             $(".navTitle").html("发件箱-回收站");
             break;
         case "7":
-            $(".show_mail_msg").load("show_mailContent");
+            $(".show_mail_msg").load("show_mailContent",{"receivers":$("#receiverName").val()});
             $(".navTitle").html("编写新邮件");
             break;
         default:
@@ -66,7 +66,7 @@ $(function () {
 
     //编写
     $(".writeNewMail").click(function () {
-        $(".show_mail_msg").load("show_mailContent");
+        $(".show_mail_msg").load("show_mailContent",{"receivers":$("#receiverName").val()});
         $(".navTitle").html("编写新邮件");
     });
 

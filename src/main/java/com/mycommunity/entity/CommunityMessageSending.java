@@ -19,4 +19,5 @@ public class CommunityMessageSending {
     private Date sendTime;
     private int senderId;
     private int status;
+    private String senderName;
 }

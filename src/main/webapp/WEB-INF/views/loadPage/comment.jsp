@@ -23,7 +23,7 @@
                             <button class="reply_btn_hover" data_cid="${ communityTopic.authorId }"
                                     data_reply_user_nickName="${ communityTopic.authorName }"
                                     onclick="replyF(this)">回复</button></span>
-                        <span class="float_right"><a href="" class="mail_logo">发邮件</a></span>
+                        <span class="float_right"><a href="${ initParam.webUrl }/mbx/mailbox?page=7&receiverName=${ communityTopic.authorId }" class="mail_logo">发邮件</a></span>
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +67,7 @@
                                             onclick="replyF(this)">回复</button></span>
                                 </c:otherwise>
                             </c:choose>
-                            <span class="float_right"><a href="${ communityComment.commenterId }"
+                            <span class="float_right"><a href="${ initParam.webUrl }/mbx/mailbox?page=7&receiverName=${ communityComment.commenterId }"
                                                          class="mail_logo">发邮件</a></span>
                         </td>
                     </tr>

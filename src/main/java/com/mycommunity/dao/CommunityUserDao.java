@@ -20,4 +20,13 @@ public interface CommunityUserDao {
 
     //根据Name获得Id
     int getUserIdByName(@Param("name")String name);
+
+    //根据id获得Name
+    String getUserNameById(@Param("id") int id);
+
+    //更新用户资料
+    int updateUser(CommunityUser communityUser);
+
+    //根据id获取用户
+    CommunityUser getUserById(@Param("id") int id);
 }

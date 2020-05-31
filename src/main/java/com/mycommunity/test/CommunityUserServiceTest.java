@@ -20,5 +20,12 @@ public class CommunityUserServiceTest {
         //System.out.println(communityUserService.userRegistration(communityUser)); 注册成功
         System.out.println(communityUserService.getUserByStr("xiaofu","ssss"));
         System.out.println(communityUserService.exists("xiaofu"));
+        //修改
+        CommunityUser communityUser2 = new CommunityUser();
+        communityUser2.setId(9);
+        communityUser2.setNickName("123");
+        communityUser2.setSignature(null);
+        System.out.println(communityUserService.updateUser(communityUser2));
+
     }
 }

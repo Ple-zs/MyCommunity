@@ -18,4 +18,28 @@
     <select id="getUserIdByName" resultType="int" parameterType="string">
         select id from CommunityUser where username = #{name}
     </select>
+    <select id="getUserNameById" resultType="string" parameterType="int">
+        select username from CommunityUser where id = #{id}
+    </select>
+    <update id="updateUser" parameterType="CommunityUser">
+        update CommunityUser set nickname = #{nickName}
+        <if test="passWord != null and passWord != ''">
+            ,password = #{passWord}
+        </if>
+        <choose>
+            <when test="signature == null or signature == ''">
+                ,signature = ''
+            </when>
+            <otherwise>
+                ,signature = #{signature}
+            </otherwise>
+        </choose>
+        <if test="user_HP_Path != null and user_HP_Path != ''">
+            ,user_hp_path = #{user_HP_Path}
+        </if>
+        where id = #{id}
+    </update>
+    <select id="getUserById" resultType="CommunityUser" parameterType="int">
+        select * from CommunityUser where id = #{id}
+    </select>
 </mapper>

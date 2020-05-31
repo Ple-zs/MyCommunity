@@ -19,5 +19,5 @@ public class CommunityUser {
     private int grade;
     private int roleId;
     private int status;
-    private String User_HP_Path;
+    private String user_HP_Path;
 }

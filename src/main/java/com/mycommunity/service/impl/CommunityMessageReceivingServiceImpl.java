@@ -29,4 +29,14 @@ public class CommunityMessageReceivingServiceImpl implements CommunityMessageRec
     public int addCommunityMessageReceiving(int messageSendingId, int receiverId) {
         return communityMessageReceivingDao.addCommunityMessageReceiving(messageSendingId,receiverId);
     }
+
+    @Override
+    public CommunityMessageReceiving getCommunityMessageReceivingById(int cmsId, int receiverId) {
+        return communityMessageReceivingDao.getCommunityMessageReceivingById(cmsId, receiverId);
+    }
+
+    @Override
+    public int sign_read(int id) {
+        return communityMessageReceivingDao.sign_read(id);
+    }
 }

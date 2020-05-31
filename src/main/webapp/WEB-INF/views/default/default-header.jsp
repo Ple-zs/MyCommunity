@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <c:if test="${ not empty loginUser }">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">个人主页 <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="${ initParam.webUrl }/home/homePage">个人主页 <span class="sr-only">(current)</span></a></li>
                     <li><a href="${ initParam.webUrl }/send/publishTopic">发表主题</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

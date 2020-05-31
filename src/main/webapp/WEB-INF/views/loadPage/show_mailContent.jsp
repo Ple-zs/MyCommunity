@@ -9,6 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="panel panel-default">
     <input type="hidden" id="mailId" value="${ mailId }"/>
+    <input type="hidden" id="receiverName" value="${ receivers }">
     <link rel="stylesheet" href="${ initParam.webUrl }/static/css/loadPage_mail.css"/>
     <div class="panel-body">编写邮件</div>
     <div class="panel panel-default" style="margin-left: 20px;margin-right: 20px">
@@ -92,5 +93,5 @@
             </c:if>
         </div>
     </div>
+    <script src="${ initParam.webUrl }/static/js/loadPage_mail.js"></script>
 </div>
-<script src="${ initParam.webUrl }/static/js/loadPage_mail.js"></script>

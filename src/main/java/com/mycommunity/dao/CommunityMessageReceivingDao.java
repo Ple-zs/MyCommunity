@@ -15,4 +15,10 @@ public interface CommunityMessageReceivingDao {
 
     //add
     int addCommunityMessageReceiving(@Param("messageSendingId") int messageSendingId,@Param("receiverId") int receiverId);
+
+    //根据邮件获得单个数据
+    CommunityMessageReceiving getCommunityMessageReceivingById(@Param("cmsId") int cmsId,@Param("receiverId") int receiverId);
+
+    //标记已读
+    int sign_read(@Param("cmrId") int id);
 }
